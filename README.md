@@ -21,7 +21,7 @@ This repository contains the complete development and documentation of the R pac
 
 - [Introduction and Motivation](#introduction-and-motivation)
 - [Package Overview](#package-overview)
-- [Arguments](#arguments)
+- [Installation Instructions and Usage Guides](#installation-instructions-and-usage-guides)
 - [Methodology](#methodology)
   - [Data Description and Exploration](#data-description-and-exploration)
   - [R Package Development](#r-package-development)
@@ -30,15 +30,15 @@ This repository contains the complete development and documentation of the R pac
 
 ## Introduction and Motivation
 
-In modern world, increasing technology has gained immense significance for location-based services. The ability to quickly find nearby essential locations such as **pharmacies, hotels, supermarkets, restaurants, hospitals**, and more has become an integral part of daily life. The concept of location based services has revolutionized the way individuals navigate and interact with their environment. With the development of smartphones and web applications, users now expect quick and accurate information about nearby services. Traditional maps and navigation tools have evolved into interactive platforms that provide real-time data visualization, transforming location awareness into a more engaging and informed experience.
+In the modern world, advancing technology has gained immense significance for location-based services. The ability to quickly find nearby essential locations such as **pharmacies, hotels, supermarkets, restaurants, hospitals**, and more has become an integral part of daily life. The concept of location-based services has revolutionized the way individuals navigate and interact with their environment. With the development of smartphones and web applications, users now expect quick and accurate information about nearby services. Traditional maps and navigation tools have evolved into interactive platforms that provide real-time data visualization, transforming location awareness into a more engaging and informed experience.
 
-The motivation behind the development of this R package lies in the need to empower users with a comprehensive tool to easily explore their surroundings and make decisions. Existing applications often lack customizability and are limited in terms of data visualization and downloading options. This package bridges the gap by offering a user-friendly interface that enables individuals to visualize, analyze, and utilize information about important locations within their vicinity.
+The motivation behind the development of this R package lies in the need to empower users with a comprehensive tool to easily explore their surroundings and make informed decisions. Existing applications offer high levels of customizability and advanced data visualization but often lack options for downloading data. Developers typically rely on cleaned datasets and visualizations for their applications, which requires direct use of APIs. This package bridges that gap by providing data download options, using cleaned data that removes unwanted or unclean entries, and eliminating the need for API keys.
 
 ### Package Overview
 
 This R package designed to enhance location-based decision-making through interactive visualization. The package use **[Leaflet](https://leafletjs.com/)**, a powerful open-source R package for interactive maps, **httr, jsonlite, utils, sf** and three external geographic APIs to provide current location of user’s with valuable information about their surroundings. The package’s flexible to allow users to customize basemaps according to their preferences. With options such as **[OpenStreeMap](https://www.openstreetmap.org/#map=5/51.33/10.45), [EsriWorldImagery](https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9)** and **[OpenTopoMap](https://opentopomap.org/#map=5/49.023/10.020)**, users can tailor the visualization experience to suit their needs.
 
-### Arguments:
+### Installation instructions and Usage guides
 
 - basemap { **OpenStreeMap , EsriWorldImagery , OpenTopoMap** }
 - category { **accommodation.hotel , commercial.supermarket , catering.restaurant , catering.cafe , healthcare.pharmacy , healthcare.hospital , education.library , entertainment.cinema** }
