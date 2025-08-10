@@ -1,8 +1,21 @@
-# A Development of Comprehensive R Package for Visualization Interactive Nearest Location Using Leaflet
+# nearPointR-An R Package for Real-Time Location based services using Geoapify API with Leaflet
 
-## Repository Overview 
+## Repository Overview
 
-This repository contains the complete development process and documentation for creating an R package **"nearPointR"** developed for visualizing interactive nearest locatins using Leaflet. 
+This repository contains the complete development and documentation of the R package **nearPointR**. It leverages real-time geospatial and non-spatial data from the Geoapify REST API to deliver dynamic, location-based services tailored to the user’s current location. Installation instructions and usage guides are also included.
+
+## **Technologies Used**
+![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
+![Leaflet for R](https://img.shields.io/badge/Leaflet-R-4CAF50?style=for-the-badge&logo=leaflet&logoColor=white)
+![REST API](https://img.shields.io/badge/REST_API-FF6C40?style=for-the-badge&logo=postman&logoColor=white) 
+![Geoapify](https://img.shields.io/badge/Geoapify-FF6C00?style=for-the-badge&logo=geoapify&logoColor=white)
+![Google Location API](https://img.shields.io/badge/Google_Location_API-F4B400?style=for-the-badge&logo=googlemaps&logoColor=white)
+![Google Maps](https://img.shields.io/badge/Google_Maps-F4B400?style=for-the-badge&logo=googlemaps&logoColor=white)
+![RStudio](https://img.shields.io/badge/RStudio-75AADB?style=for-the-badge&logo=rstudio&logoColor=white) 
+![R Markdown](https://img.shields.io/badge/R_Markdown-2D69C7?style=for-the-badge&logo=r&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white) 
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white) 
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 ## Table of Content
 
