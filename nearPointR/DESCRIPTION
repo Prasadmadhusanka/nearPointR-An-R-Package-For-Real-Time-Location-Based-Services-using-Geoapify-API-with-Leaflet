@@ -1,0 +1,22 @@
+Package: nearPointR
+Title: Interactive Nearest Location Visualization Using Leaflet in R
+Version: 0.0.0.01
+Authors@R: 
+    person("Prasad Madushanka Dauglas", "Dambure Liyanage", , "prasad.dream13@gmail.com", role = c("aut", "cre"))
+Description: The nearPointR package facilitates interactive visualization of nearest locations on a map using the Leaflet library in R. Also nearest location data can be downloaded as csv, json, kml file types.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    httr,
+    jsonlite,
+    leaflet,
+    sf,
+    utils
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

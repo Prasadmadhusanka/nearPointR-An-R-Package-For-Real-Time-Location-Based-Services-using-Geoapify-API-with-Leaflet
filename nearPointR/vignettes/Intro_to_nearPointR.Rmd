@@ -1,0 +1,145 @@
+---
+title: "Introduction to R Package 'nearPointR'"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to R Package 'nearPointR'}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## nearPointR; Interactive Nearest Location Visualization Using Leaflet: A Comprehensive R Package
+
+## About the Author: 
+- Name: Prasad Madushanka Dauglas Dambure Liyanage
+- Email: prasad.dream13@gmail.com / prasad.dambure@uni-muenster.de
+
+## Introduction and motivation:
+In modern world, increasing technology has gained immense significance for location-based services. The ability to quickly find nearby essential locations such as **pharmacies, hotels, supermarkets, restaurants, cafes, hospitals, library, cinema** and more has become an integral part of daily life. The concept of location based services has revolutionized the way individuals navigate and interact with their environment. With the development of smartphones and web applications, users now expect quick and accurate information about nearby services. Traditional maps and navigation tools have evolved into interactive platforms that provide real-time data visualization, transforming location awareness into a more engaging and informed experience.
+
+The motivation behind the development of this R package lies in the need to empower users with a comprehensive tool to easily explore their surroundings and make decisions. Existing applications often lack customization and are limited in terms of data visualization and downloading options. This package bridges the gap by offering a user-friendly interface that enables individuals to visualize, analyze, and utilize information about important locations within their vicinity.
+
+### Package Overview:
+This R package designed to enhance location-based decision-making through interactive visualization. The package use **Leaflet**, a powerful open-source R package for interactive maps, **httr,**, **jsonlite**, **utils**, **sf**  and three external geographic APIs to provide current location of user's with valuable information about their surroundings. The package's flexible to allow users to customize basemaps according to their preferences. With options such as **OpenStreeMap**, **EsriWorldImagery** and **OpenTopoMap**, users can tailor the visualization experience to suit their needs.
+
+##### Arguments:
+- basemap { **OpenStreeMap** , **EsriWorldImagery** , **OpenTopoMap** }
+- category { **accommodation.hotel** , **commercial.supermarket** , **catering.restaurant** , **catering.cafe** , **healthcare.pharmacy** , **healthcare.hospital** , **education.library** , **entertainment.cinema** }
+- output_format { **csv** , **geojson** , **kml** }
+
+##### The developed R package introduces a set of functions to enhance the location-based experience for users as follows;
+- **current_location(basemap)**: Visualizes the user's current location on an interactive map
+- **show_list(category)**: Users can select specific types of locations, such as pharmacies, hotels, restaurants, etc. and visualize the nearest **50** locations of the selected type within a **10km** range. This help users in identifying the availability and proximity of essential services.
+- **download_list(category,output_format)**: Users can download the detailed information of the nearest locations as CSV, geojson, or kml formats. This functionality is particularly useful for users who wish to analyze the data in external tools or share it with others.
+- **navigate_to_closest(category)**: Facilitates navigation to the closest important location using Google Maps, enhancing the usability of the package in practical scenarios.
+- **nearest_locations(category,basemap)**: Provides an interactive map visualization with Leaflet library for the **50** nearest important locations relative to the user's current location within a **10km** range.
+
+##### The developed package has a wide range of potential applications, including:
+- Tourism and Travel Planning: Travelers can quickly locate services and points of interest in a new city, enabling them to make efficient plans.
+- Emergency Situations: During emergencies, individuals can easily identify the nearest hospitals and pharmacies. 
+- Business Decision-Making: Entrepreneurs can analyze the distribution of competitors and potential customers to make informed business decisions.
+
+## Data Description and exploration:
+This package uses **[Google Location API](https://console.cloud.google.com/)** and **[ipinfo API](http://ipinfo.io/)** for obtaining the user's current location and details of current location. This package also uses data extracted from an **[GeoAPIfy](https://apidocs.geoapify.com/)**, which provides information about various important locations in a given geographical area. The data includes attributes such as location name, geographical coordinates, street name, and many more. The URL of the API can be customized according to the customer requirements. For this package URL was customized to **50** numbers of point’s lies within the **10km** range.
+
+```{r}
+category <- "accommodation.hotel"
+longitude <- 7.6009394 # When executing computer obtain this from Google location API
+latitude <- 51.956711 # When executing computer obtain this from Google location API
+api_url <- paste0("https://api.geoapify.com/v2/places?categories=",
+                     category,
+                     "&filter=circle:",
+                     longitude,",",
+                     latitude,
+                     ",5000&bias=proximity:",
+                     longitude,",",
+                     latitude,
+                     "&lang=en&limit=50&apiKey=YOUR API KEY"
+  )
+print(api_url)
+```
+Understanding the structure and content of the data is essential for maximizing the utility of the Interactive Nearest Location Visualization R package. The data exploration process provides available data attributes, their distributions, and potential patterns. Here are some key aspects of data exploration:
+
+##### Data Attributes:
+On map view, following data attributes can be seen in popups. And also these data attributes can be seen in downloaded formats (csv, geojson, kml). 
+- Location Name: The name of the important location, such as a specific restaurant or pharmacy.
+- Latitude and Longitude: The geographic coordinates that pinpoint the location on a map.
+- Distance: distance to specific location from user’s current location 
+- Street- Street number
+- House number – House number of the location
+- Postal code – Postal code for specific location
+- Opening hours – Opening hours for service
+- Phone number – Contact number
+- Web site – Web site relevant to service
+
+##### Spatial Distribution:
+Analyzing the distribution of location data on a map helps identify clusters and trends. Visualizing the spatial distribution of various location types can reveal the geographic availability of different services.
+
+##### Proximity Analysis and Navigation:
+By calculating the distances between the user's current location and the nearest important locations of different types, it's possible to understand the accessibility of various services. This analysis can highlight areas that may lack specific services within a certain radius.
+
+## Results:
+The results provide a deeper understanding of the spatial distribution of important locations, their accessibility, and their characteristics. Here, discuss obtained results and their significance:
+
+```{r}
+library(nearPointR)
+```
+
+##### Visualizes the user's current location on an interactive map
+```{r}
+basemap <- "OpenStreetMap"
+current_location(basemap)
+```
+```{r}
+basemap <- "EsriWorldImagery"
+current_location(basemap)
+```
+
+##### Spatial Distribution and Accessibility:
+The spatial distribution of different types of important locations offers a clear overview of areas with high concentrations of services. This information help users in identifying commercial zones, popular residential areas, and potential gaps in service coverage. For instance, a dense cluster of restaurants in a particular area might indicate a vibrant dining scene, while a sparse distribution of pharmacies could highlight a need for improved accessibility to healthcare services.
+
+```{r}
+category <- "healthcare.pharmacy"
+basemap <- "EsriWorldImagery"
+nearest_locations(category,basemap)
+```
+```{r}
+category <- "healthcare.hospital"
+basemap <- "OpenStreetMap"
+nearest_locations(category,basemap)
+```
+
+##### Proximity Analysis and Navigation Route Planning:
+The average distances to nearest important locations provide users with essential information for planning their routes and optimizing their travel time. The package's functionality assists users in finding the closest services, reducing travel distances, and making more efficient choices.
+
+```{r}
+category <- "healthcare.hospital"
+navigate_to_closest(category)
+```
+After executing Google map will open on your default web browser with best navigation route to closest category marker. **[Screenshot of Output](https://i.imgur.com/Y3XZb4B.png)**
+
+##### Showing nearest locations data as dataframe:
+
+```{r}
+category <- "commercial.supermarket"
+show_list(category)
+```
+
+##### Download the dataframe as csv or geojson or kml format:
+
+```{r}
+category <- "healthcare.pharmacy"
+output_format <- "kml"
+download_list(category,output_format)
+```
+
+## Discussion 
+The analysis of the data set using the Interactive Nearest Location Visualization R package demonstrates its capabilities in providing valuable insights to users. The visualization reveals the concentration of different services, aiding users in identifying popular areas. Proximity analysis indicates the accessibility of various services, with an average distance that can assist users in planning their routes. A deep understanding of the data attributes, patterns, and distributions enables users to make informed decisions when utilizing the package's functionalists. By combining the power of interactive maps, geographic APIs, and exploratory data analysis, the package provides users with a comprehensive tool for effectively navigating their surroundings and accessing essential services.
+
+## THANK YOU FOR READING THIS DOCUMENTAION
+## ENJOY WITH 'nearPointR' FOR YOUR DAY TODAY ACTIVITIES
